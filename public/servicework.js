@@ -36,4 +36,13 @@ const FILES_TO_CACHE = [
       );
     });
   
-  
+  //----------------installing------------------//
+  self.addEventListener("install", event => {
+    event.standBy(
+      caches
+        .open(STATIC_CACHE)
+        .then(cache => cache.addAll(FILES_TO_CACHE))
+        .then(() => self.skipWaiting())
+    );
+  });
+
