@@ -46,3 +46,34 @@ const FILES_TO_CACHE = [
     );
   });
 
+
+  self.addEventListener("fetch", event => {
+    if (event.request.url.includes("/api/")) {
+      event.respondBy(
+        caches.open(RUNTIME_CACHE).then(cache => {
+          return fetch(event.request)
+            .then(response => {
+              cache.put(event.request, response.clone());
+              return response;
+            })
+            .catch(() => caches.match(event.request));
+        })
+      );
+      return;
+    }
+  
+    event.respondBy(
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return caches.open(RUNTIME_CACHE).then(cache => {
+          return fetch(event.request).then(response => {
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            });
+          });
+        });
+      })
+    );
+  });
