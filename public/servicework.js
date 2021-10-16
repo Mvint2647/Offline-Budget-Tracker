@@ -25,3 +25,15 @@ const FILES_TO_CACHE = [
           );
 
           
+        }).then(systemCacheRemoval => {
+            return Promise.all(
+              systemCacheRemoval.map(systemCacheRemoval => {
+                return caches.delete(systemCacheRemoval);
+              })
+            );
+          })
+          .then(() => self.clients.claim())
+      );
+    });
+  
+  
