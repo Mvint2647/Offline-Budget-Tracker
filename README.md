@@ -59,11 +59,11 @@ Pull requests are welcome
 ## Screenshots
 **MainPage**
 
-![Online]()
+![Online](ss61.png)
 
 **Main Page**
 
-![Offline]()
+![Offline](ss60.png)
 
 ## Questions
 Checkout my GitHub [profile](https://github.com/mvint2647)
