@@ -44,7 +44,7 @@ Giving users a fast and easy way to track their money is important, but allowing
 4. Switch to offline & repeat steps 2. and 3.
 
 
-A demo of the application is available at: "?"
+A demo of the application is available at: "https://calm-journey-38613.herokuapp.com/"
 ## Features
 * Add a Purchase
 * Subtract a Purchase
